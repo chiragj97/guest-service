@@ -1,5 +1,5 @@
 "use client";
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, useCallback, useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -62,7 +62,10 @@ const rows = [
 ];
 
 export default function BasicTable() {
-  const [searchKey, setSearchKey] = React.useState("");
+  const [searchKey, setSearchKey] = useState("");
+  const [isIn, setIsIn] = useState(false);
+
+  const switchInOut = useCallback(() => setIsIn(!isIn), [isIn]);
   const onSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setSearchKey(value);
@@ -163,18 +166,25 @@ export default function BasicTable() {
           >
             <div
               className="w-100 d-flex align-items-center justify-content-center"
+              onClick={switchInOut}
               style={{
-                background: "#25215A",
+                background: !isIn ? "#25215A" : "transparent",
                 padding: "10px, 25px, 10px, 25px",
                 borderRadius: 30,
-                color: "#fff",
+                color: !isIn ? "#fff" : "black",
+                cursor: "pointer",
               }}
             >
               Out
             </div>
             <div
               className="w-100 d-flex align-items-center justify-content-center"
+              onClick={switchInOut}
               style={{
+                background: isIn ? "#25215A" : "transparent",
+                cursor: "pointer",
+                color: isIn ? "#fff" : "black",
+
                 padding: "10px, 25px, 10px, 25px",
                 borderRadius: 30,
               }}
