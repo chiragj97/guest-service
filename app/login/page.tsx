@@ -4,9 +4,9 @@ import Login from "@/components/Login/Login";
 
 const LoginPage = () => {
   return (
-    <div className="flex flex-col items-center">
+    <div className="d-flex justify-content-center flex-column align-items-center">
       <CoverImage />
-      <div className="flex flex-col items-center">
+      <div className="d-flex justify-content-center align-items-center">
         <div className="p-4">
           <Image
             src="/assets/hotel-name.png"

@@ -2,8 +2,11 @@ import Image from "next/image";
 
 const Login = () => {
   return (
-    <div className="flex flex-col items-center" style={{ width: "20rem" }}>
-      <div className="flex flex-col">
+    <div
+      className="d-flex justify-content-center flex-column"
+      style={{ width: "20rem" }}
+    >
+      <div className="d-flex justify-content-center flex-column">
         <input
           placeholder="Username"
           type="text"

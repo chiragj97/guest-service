@@ -17,9 +17,9 @@ const Module = () => {
   ];
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="d-flex flex-column align-items-center">
       <CoverImage />
-      <div className="flex flex-col items-center">
+      <div className="d-flex flex-column align-items-center">
         <div className="p-4">
           <Image
             src="/assets/hotel-name.png"
@@ -29,7 +29,7 @@ const Module = () => {
           />
         </div>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-12 gap-y-4 mt-4">
+      <div className="row row-cols-2 row-cols-md-3 row-cols-lg-4 gap-x-12 gap-y-4 mt-4">
         {cardData.map((card, index) => (
           <ModuleCard
             key={index}
