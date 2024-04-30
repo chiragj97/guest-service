@@ -155,7 +155,7 @@ export default function BasicTable() {
           </div>
 
           <div
-            className="d-flex p-1 "
+            className="d-flex p-1 me-3"
             style={{
               background: "#F4F4F4",
               boxShadow: " 0 3px 10px rgb(0 0 0 / 0.2)",
