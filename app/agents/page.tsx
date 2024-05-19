@@ -1,4 +1,5 @@
 import AgentDetailsCard from "@/components/AgentDetailsCard/AgentDetailsCard";
+import BottomComponent from "@/components/BottomComponent";
 import Layout from "@/components/Layout/Layout";
 import UserList from "@/components/UserList/UserList";
 import UserListItems from "@/components/UserListItems";

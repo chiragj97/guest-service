@@ -9,7 +9,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="d-flex">
       <Sidebar />
-      <div style={{ width: "-webkit-fill-available" }}>{children}</div>
+      <div
+        style={{
+          width: "-webkit-fill-available",
+        }}
+      >
+        {children}
+      </div>
     </div>
   );
 };

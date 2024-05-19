@@ -1,6 +1,49 @@
-import Image from "next/image";
+"use client";
 
-const Login = () => {
+import React, { useState, ChangeEvent } from "react";
+import Image from "next/image";
+import axios, { AxiosResponse } from "axios";
+
+const Login: React.FC = () => {
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  const handleUsernameChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setUsername(e.target.value);
+  };
+
+  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  };
+
+  const handleLogin = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    try {
+      const response: AxiosResponse = await axios.post(
+        "http://65.0.7.4:7777/guestModule/admin_login",
+        { username, password }
+      );
+
+      console.log("Login successful:", response.data);
+      // Handle successful login (e.g., redirect to dashboard)
+    } catch (error: any) {
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        console.error("Server responded with error:", error.response.data);
+        // Handle server error (e.g., display error message to user)
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.error("No response received:", error.request);
+        // Handle network error (e.g., display error message to user)
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.error("Request setup error:", error.message);
+        // Handle other types of errors (e.g., display generic error message)
+      }
+    }
+  };
+
   return (
     <div
       className="d-flex justify-content-center flex-column"
@@ -11,33 +54,42 @@ const Login = () => {
           placeholder="Username"
           type="text"
           style={{ width: "320px" }}
-          className="mb-3 mt-5 rounded-3xl border border-gray-300 px-4 py-2"
+          className="mb-3 mt-3 rounded-pill border border-gray-300 px-4 py-2"
+          value={username}
+          onChange={handleUsernameChange}
         />
         <input
           placeholder="Password"
-          type="text"
+          type="password"
           style={{ width: "320px" }}
-          className="rounded-3xl border border-gray-300 px-4 py-2"
+          className="rounded-pill border border-gray-300 px-4 py-2"
+          value={password}
+          onChange={handlePasswordChange}
         />
       </div>
       <span
-        className="text-sm p-2 font-semibold cursor-pointer ml-auto"
+        className="text-sm p-2 pe-0 font-semibold cursor-pointer ml-auto d-flex justify-content-end"
         style={{ color: "#1C185B" }}
       >
         Forgot Password?
       </span>
-      <div className="mt-4">
-        <Image
-          src="/assets/fingerprint.png"
-          alt="Fingerprint"
-          height={50}
-          width={50}
-        />
-      </div>
-      <div className="flex justify-center w-96 mt-4">
-        <button className="rounded-full bg-blue-500 text-white py-2 px-6 border border-blue-500 hover:bg-white hover:text-blue-500 hover:border-blue-500 focus:outline-none focus:ring focus:border-blue-700">
-          Login
-        </button>
+      <div className="d-flex flex-column justify-content-center align-items-center">
+        <div className="mt-4">
+          <Image
+            src="/assets/fingerprint.png"
+            alt="Fingerprint"
+            height={50}
+            width={50}
+          />
+        </div>
+        <div className="flex justify-center w-96 mt-4">
+          <button
+            onClick={handleLogin}
+            className="btn btn-primary rounded-pill px-4"
+          >
+            Login
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -3,7 +3,6 @@ import Image from "next/image";
 import "../globals.css";
 import { SearchIcon } from "../../components/icons/icons";
 import TextMessage from "@/components/Message/TextMessage";
-// import UserCard from "@/components/UserCard/UserCard";
 import Layout from "@/components/Layout/Layout";
 import UserList from "@/components/UserList/UserList";
 

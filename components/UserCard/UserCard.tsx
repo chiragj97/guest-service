@@ -8,7 +8,7 @@ interface UserCardProps {
 
 const UserCard: React.FC<UserCardProps> = ({ children, icons }) => {
   return (
-    <li className="d-flex align-items-center justify-content-between p-2 user user:hover cursor-pointer">
+    <li className="d-flex align-items-center justify-content-between p-2 bg bg:hover brand-bg rounded cursor-pointer">
       <div className="me-3">
         <Image
           src="/assets/module.jpg"
