@@ -9,6 +9,7 @@ import TableRow from "@mui/material/TableRow";
 import Service from "./services";
 import Styles from "../styles/homeDash.module.css";
 import { SearchIcon } from "@/components/icons/icons";
+import Image from "next/image";
 function createData(
   source: number,
   uid: string,
@@ -72,8 +73,8 @@ export default function BasicTable() {
     setSearchKey(value);
   };
   return (
-    <div>
-      <div className="top-box h-100 w-100 pb-3 pt-3">
+    <div className="position-relative h-100 w-100">
+      <div className="position-absolute top-box h-100 w-100 pb-3 pt-3">
         <div className="first-box d-flex justify-content-between">
           <div
             className="w-100 h-100 d-flex justify-content-between align-items-center"
@@ -171,7 +172,7 @@ export default function BasicTable() {
             </div>
           </div>
         </div>
-        <div className="second-box pt-4" style={{}}>
+        <div className="second-box pt-4">
           <div
             className=" d-flex align-items-center justify-content-between pe-1 ps-3"
             style={{
@@ -188,81 +189,98 @@ export default function BasicTable() {
             </label>
           </div>
         </div>
-      </div>
-      <Service />
+        <Service />
 
-      <TableContainer>
-        <Table
-          sx={{ minWidth: 650, borderBottom: "none" }}
-          aria-label="simple table"
-        >
-          <TableHead>
-            <TableRow
-              sx={{
-                "& th": { fontSize: 15, fontWeight: 400 },
-              }}
-            >
-              <TableCell align="center">Source</TableCell>
-              <TableCell align="center">UID</TableCell>
-              <TableCell align="center">Date</TableCell>
-              <TableCell align="center">Time</TableCell>
-              <TableCell align="center">Location</TableCell>
-              <TableCell align="center">Guest Name</TableCell>
-              <TableCell align="center">Task</TableCell>
-              <TableCell align="center">Timer</TableCell>
-              <TableCell align="center">Agent</TableCell>
-              <TableCell align="center">Status</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row) => (
+        <TableContainer>
+          <Table
+            sx={{ minWidth: 650, borderBottom: "none" }}
+            aria-label="simple table"
+          >
+            <TableHead>
               <TableRow
-                key={row.source}
                 sx={{
-                  "& td, & th": {
-                    borderBottom: "none",
-                    fontSize: 12,
-                    fontWeight: 400,
-                  },
+                  "& th": { fontSize: 15, fontWeight: 400 },
                 }}
               >
-                <TableCell align="center" style={{ fontWeight: "bolder" }}>
-                  {row.source}
-                </TableCell>
-
-                <TableCell align="center">{row.uid}</TableCell>
-                <TableCell align="center">{row.date}</TableCell>
-                <TableCell align="center">{row.time}</TableCell>
-                <TableCell align="center">{row.location}</TableCell>
-                <TableCell align="center">{row.guest_name}</TableCell>
-                <TableCell align="center">{row.task}</TableCell>
-                <TableCell align="center" style={{ color: "red" }}>
-                  {row.timer}
-                </TableCell>
-                <TableCell
-                  align="center"
-                  sx={{ color: "#1C185B", fontWeight: "600 !important" }}
-                >
-                  {row.agent}
-                </TableCell>
-                <TableCell align="center">
-                  <div
-                    className="p-2"
-                    style={{
-                      borderRadius: 4,
-                      background: " #3E89CCBF",
-                      color: "#fff",
-                      fontWeight: 700,
-                    }}
-                  >
-                    {row.status}
-                  </div>
-                </TableCell>
+                <TableCell align="center">Source</TableCell>
+                <TableCell align="center">UID</TableCell>
+                <TableCell align="center">Date</TableCell>
+                <TableCell align="center">Time</TableCell>
+                <TableCell align="center">Location</TableCell>
+                <TableCell align="center">Guest Name</TableCell>
+                <TableCell align="center">Task</TableCell>
+                <TableCell align="center">Timer</TableCell>
+                <TableCell align="center">Agent</TableCell>
+                <TableCell align="center">Status</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+            <TableBody>
+              {rows.map((row) => (
+                <TableRow
+                  key={row.source}
+                  sx={{
+                    "& td, & th": {
+                      borderBottom: "none",
+                      fontSize: 12,
+                      fontWeight: 400,
+                    },
+                  }}
+                >
+                  <TableCell align="center" style={{ fontWeight: "bolder" }}>
+                    {row.source}
+                  </TableCell>
+
+                  <TableCell align="center">{row.uid}</TableCell>
+                  <TableCell align="center">{row.date}</TableCell>
+                  <TableCell align="center">{row.time}</TableCell>
+                  <TableCell align="center">{row.location}</TableCell>
+                  <TableCell align="center">{row.guest_name}</TableCell>
+                  <TableCell align="center">{row.task}</TableCell>
+                  <TableCell align="center" style={{ color: "red" }}>
+                    {row.timer}
+                  </TableCell>
+                  <TableCell
+                    align="center"
+                    sx={{ color: "#1C185B", fontWeight: "600 !important" }}
+                  >
+                    {row.agent}
+                  </TableCell>
+                  <TableCell align="center">
+                    <div
+                      className="p-2"
+                      style={{
+                        borderRadius: 4,
+                        background: " #3E89CCBF",
+                        color: "#fff",
+                        fontWeight: 700,
+                      }}
+                    >
+                      {row.status}
+                    </div>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <div className="position-absolute bottom-0 w-100 ">
+          <div
+            className="d-flex align-items-center w-100 p-2"
+            style={{ border: "1px solid black" }}
+          >
+            <span>Add</span>
+            <div
+              className="d-flex align-items-center justify-content-center p-1"
+              style={{
+                fontSize: 28,
+                fontWeight: 700,
+              }}
+            >
+              <Image src={"/assets/add.png"} alt="add" width="25" height="25" />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
