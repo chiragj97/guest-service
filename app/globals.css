@@ -1,0 +1,64 @@
+:root {
+  /* --hover-bg-color: rgba(0, 0, 0, 0.02); */
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+}
+
+/* CSS */
+/* Hide scrollbar by default */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+.xs {
+  font-size: 12px;
+}
+
+.xxs {
+  font-size: 10px;
+}
+
+.bg {
+  transition: background-color 0.1s ease-in-out;
+}
+
+.bg:hover {
+  background-color: var(--hover-bg-color);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+
+.bg-brand {
+  background: rgba(28, 24, 91, 0.75);
+  color: white;
+}
+
+.brand-bg:hover {
+  color: white;
+  border-radius: 6px 6px 0px 0px;
+}
+
+.bg-lightblue:hover {
+  background-color: aliceblue;
+}
+
+.brand-bg {
+  --hover-bg-color: rgba(28, 24, 91, 0.75);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
