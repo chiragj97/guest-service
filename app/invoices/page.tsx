@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout/Layout";
+import SearchBar from "@/components/SearchBar/SearchBar";
 import {
   Table,
   TableBody,
@@ -61,10 +62,7 @@ const Invoices = () => {
   return (
     <Layout>
       <div className="d-flex justify-content-center p-2">
-        <input
-          placeholder="Search"
-          className="border rounded-pill px-3 py-2 w-50"
-        />
+        <SearchBar />
       </div>
       <TableContainer>
         <Table

@@ -11,7 +11,6 @@ import {
   TableRow,
   Box,
 } from "@mui/material";
-import PeopleCounter from "../PeopleCounter/PeopleCounter";
 
 interface CartItem {
   date: string;
@@ -54,11 +53,8 @@ const BillingDetails: React.FC<Props> = ({ cartItems }) => {
   return (
     <Box>
       <div className="row">
-        <div className="col-md-1">
-          <PeopleCounter count={4} />
-        </div>
-        <div className="col">
-          <Paper elevation={3} style={{ padding: "1px", margin: "10px" }}>
+        <div className="col p-1" style={{overflow: 'auto', height: '72vh'}}>
+          <Paper elevation={2} style={{ padding: "1px" }}>
             <Grid container spacing={2}>
               {/* Full-width table section */}
               <Grid item xs={12}>
@@ -96,62 +92,62 @@ const BillingDetails: React.FC<Props> = ({ cartItems }) => {
                 <Grid item xs={12} sm={7}>
                   <Grid container spacing={1} style={{ marginTop: "10px" }}>
                     <Grid item xs={6}>
-                      <Typography variant="subtitle1">Sub Total:</Typography>
+                      <Typography variant="body2">Sub Total:</Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <Typography variant="subtitle1" align="right">
+                      <Typography variant="body2" align="right">
                         {subtotal.toFixed(2)}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <Typography variant="subtitle1">CGST (9%):</Typography>
+                      <Typography variant="body2">CGST (9%):</Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <Typography variant="subtitle1" align="right">
+                      <Typography variant="body2" align="right">
                         {cgst.toFixed(2)}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <Typography variant="subtitle1">SGST (9%):</Typography>
+                      <Typography variant="body2">SGST (9%):</Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <Typography variant="subtitle1" align="right">
+                      <Typography variant="body2" align="right">
                         {sgst.toFixed(2)}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <Typography variant="subtitle1">Service Charge:</Typography>
+                      <Typography variant="body2">Service Charge:</Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <Typography variant="subtitle1" align="right">
+                      <Typography variant="body2" align="right">
                         {serviceCharge.toFixed(2)}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <Typography variant="subtitle1">
+                      <Typography variant="body2">
                         CGST (9%) on Service Charge:
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <Typography variant="subtitle1" align="right">
+                      <Typography variant="body2" align="right">
                         {cgstOnServiceCharge.toFixed(2)}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <Typography variant="subtitle1">
+                      <Typography variant="body2">
                         SGST (9%) on Service Charge:
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <Typography variant="subtitle1" align="right">
+                      <Typography variant="body2" align="right">
                         {sgstOnServiceCharge.toFixed(2)}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <Typography variant="subtitle1">Tip </Typography>
+                      <Typography variant="body2">Tip </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <Typography variant="subtitle1" align="right">
+                      <Typography variant="body2" align="right">
                         1000
                       </Typography>
                     </Grid>

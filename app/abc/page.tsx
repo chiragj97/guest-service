@@ -7,6 +7,13 @@ import { Switch } from "@mui/material";
 import Image from "next/image";
 
 const Abc = () => {
+
+  const filterOptions = [
+    { type: 'text' as const, label: 'Search by name' },
+    { type: 'toggle' as const, label: 'Show only active' },
+    { type: 'expandable' as const, label: 'Category', options: ['Category 1', 'Category 2'] },
+  ];
+
   return (
     <Layout>
       <div className="d-flex justify-content-center">
@@ -153,7 +160,7 @@ const Abc = () => {
         </div>
         <div className="col-md-5">
           <div className="p-2">
-            <SearchBar />
+            <SearchBar filterOptions={filterOptions}/>
           </div>
         </div>
       </div>

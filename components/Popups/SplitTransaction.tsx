@@ -3,35 +3,21 @@ import {
     Box,
     Radio,
     RadioGroup,
-    FormControl,
     FormControlLabel,
     TextField,
     Button,
     Typography
 } from '@mui/material';
 
-const DiscountForm: React.FC = () => {
-    const [transactionType, setTransactionType] = useState<string>('bill');
+const SplitTransaction: React.FC = () => {
     const [discountValue, setDiscountValue] = useState<string>('');
-    const [reason, setReason] = useState<string>('');
-
-    const handleTransactionChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setTransactionType(event.target.value);
-    };
 
     const handleDiscountValueChange = (event: ChangeEvent<HTMLInputElement>) => {
         setDiscountValue(event.target.value);
     };
 
-    const handleReasonChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setReason(event.target.value);
-    };
-
     const handleSubmit = () => {
-        // Handle form submission logic
-        console.log('Transaction Type:', transactionType);
         console.log('Discount Value:', discountValue);
-        console.log('Reason:', reason);
     };
 
     return (
@@ -40,20 +26,6 @@ const DiscountForm: React.FC = () => {
                 p: 1,
             }}
         >
-            <FormControl component="fieldset">
-                <RadioGroup
-                    name="transactionType"
-                    value={transactionType}
-                    onChange={handleTransactionChange}
-                >
-                    <FormControlLabel
-                        value="transaction"
-                        control={<Radio />}
-                        label="Select Transaction"
-                    />
-                    <FormControlLabel value="bill" control={<Radio />} label="Select Bill" />
-                </RadioGroup>
-            </FormControl>
             <Box mt={2}>
                 <TextField
                     placeholder='Enter Value'
@@ -72,17 +44,6 @@ const DiscountForm: React.FC = () => {
                     }}
                 />
             </Box>
-            <Box mt={2}>
-                <TextField
-                    label="Enter Reason"
-                    multiline
-                    rows={4}
-                    variant="outlined"
-                    fullWidth
-                    value={reason}
-                    onChange={handleReasonChange}
-                />
-            </Box>
             <Box mt={2} textAlign="center">
                 <Button variant="contained" color="primary" onClick={handleSubmit}>
                     Apply
@@ -92,4 +53,4 @@ const DiscountForm: React.FC = () => {
     );
 };
 
-export default DiscountForm;
+export default SplitTransaction;

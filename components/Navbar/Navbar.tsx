@@ -14,44 +14,58 @@ const Navbar: React.FC = () => {
   return (
     <nav className="d-flex shadow-sm">
       <div
-        className={`col-md-3 border-bottom py-2 text-center bg bg:hover brand-bg ${
-          pathname === "/view-ticket/guest"
+        className={`col-md-2 border-bottom py-2 text-center bg bg:hover brand-bg ${pathname === "/view-ticket/guest"
             ? "bg-brand text-white rounded-top"
             : ""
-        }`}
+          }`}
         onClick={() => handleNavigation("/view-ticket/guest")}
       >
         Guest
       </div>
       <div
-        className={`col-md-3 border-bottom py-2 text-center bg bg:hover brand-bg ${
-          pathname === "/view-ticket/booking"
+        className={`col-md-2 border-bottom py-2 text-center bg bg:hover brand-bg ${pathname === "/view-ticket/booking"
             ? "bg-brand text-white rounded-top"
             : ""
-        }`}
+          }`}
         onClick={() => handleNavigation("/view-ticket/booking")}
       >
         Booking
       </div>
       <div
-        className={`col-md-3 border-bottom py-2 text-center bg bg:hover brand-bg ${
-          pathname === "/view-ticket/cart"
+        className={`col-md-2 border-bottom py-2 text-center bg bg:hover brand-bg ${pathname === "/view-ticket/cart"
             ? "bg-brand text-white rounded-top"
             : ""
-        }`}
+          }`}
         onClick={() => handleNavigation("/view-ticket/cart")}
       >
         Cart
       </div>
       <div
-        className={`col-md-3 border-bottom py-2 text-center bg bg:hover brand-bg ${
-          pathname === "/view-ticket/billing"
+        className={`col-md-2 border-bottom py-2 text-center bg bg:hover brand-bg ${pathname === "/view-ticket/billing"
             ? "bg-brand text-white rounded-top"
             : ""
-        }`}
+          }`}
         onClick={() => handleNavigation("/view-ticket/billing")}
       >
         Billing
+      </div>
+      <div
+        className={`col-md-2 border-bottom py-2 text-center bg bg:hover brand-bg ${pathname === "/view-ticket/inventory"
+            ? "bg-brand text-white rounded-top"
+            : ""
+          }`}
+        onClick={() => handleNavigation("/view-ticket/inventory")}
+      >
+        Inventory
+      </div>
+      <div
+        className={`col-md-2 border-bottom py-2 text-center bg bg:hover brand-bg ${pathname === "/view-ticket/checklist"
+            ? "bg-brand text-white rounded-top"
+            : ""
+          }`}
+        onClick={() => handleNavigation("/view-ticket/checklist")}
+      >
+        Checklist
       </div>
     </nav>
   );

@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, ChangeEvent } from 'react';
+import SearchBar from '../SearchBar/SearchBar';
 
 interface Notification {
   id: number;
@@ -61,20 +62,19 @@ const Notifications: React.FC = () => {
     notification.type.toLowerCase().includes(filter.toLowerCase())
   );
 
+  const filterOptions = [
+    { type: 'text' as const, label: 'Search by name' },
+    { type: 'toggle' as const, label: 'Show only active' },
+    { type: 'expandable' as const, label: 'Category', options: ['Category 1', 'Category 2'] },
+  ];
+
   return (
     <div className="container mt-4">
       <div className="row">
         <div className="col-12">
           <h2>Notifications</h2>
           <div className="d-flex justify-content-between align-items-center mb-3">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Search"
-              value={filter}
-              onChange={handleFilterChange}
-            />
-            <button className="btn btn-primary ms-2">Filter</button>
+           <SearchBar filterOptions={filterOptions} />
           </div>
           <div className="list-group">
             {filteredNotifications.map((notification) => (

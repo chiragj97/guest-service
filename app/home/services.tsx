@@ -24,7 +24,7 @@ const Status = {
 const Service = () => {
   return (
     <div
-      className="d-flex justify-content-between px-3"
+      className="d-flex justify-content-between p-3"
       style={{
         fontSize: 20,
         fontWeight: 500,

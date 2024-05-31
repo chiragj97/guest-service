@@ -22,7 +22,7 @@ interface Product {
 
 const CartDetails: React.FC<{ cartItems: Product[] }> = ({ cartItems }) => {
   return (
-    <Grid container spacing={2} className="shadow-sm rounded pb-2">
+    <Grid container className="shadow-sm rounded pb-2">
       <Grid item xs={12} md={12} className="p-0 m-0">
         <div className="d-flex p-3 rounded-top bg-brand justify-content-between align-items-center">
           <span>2 Items Selected</span>
@@ -30,11 +30,10 @@ const CartDetails: React.FC<{ cartItems: Product[] }> = ({ cartItems }) => {
           <span>$20509</span>
         </div>
         <div
-          className="mx-2"
           style={{ overflowY: "auto", height: window.innerHeight - 240 }}
         >
           {cartItems.map((item: Product) => (
-            <CardContent className="mt-1 px-2 py-1" key={item.id}>
+            <CardContent className="mt-1 py-1" key={item.id}>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
                   <div className="d-flex justify-content-between">

@@ -11,6 +11,10 @@ interface TabPanelProps {
   value: number;
 }
 
+interface DynamicTabsProps {
+  tabs: Array<{ label: string; content: React.ReactNode }>;
+}
+
 function CustomTabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
 
@@ -38,7 +42,7 @@ function a11yProps(index: number) {
   };
 }
 
-export default function BasicTabs() {
+const DynamicTabs: React.FC<DynamicTabsProps> = ({ tabs }) => {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -51,27 +55,20 @@ export default function BasicTabs() {
         <Tabs
           value={value}
           onChange={handleChange}
-          aria-label="basic tabs example"
+          aria-label="dynamic tabs example"
         >
-          <Tab label="High Foam" {...a11yProps(0)} />
-          <Tab label="Low Foam" {...a11yProps(1)} />
-          <Tab label="Aromatic" {...a11yProps(2)} />
+          {tabs.map((tab, index) => (
+            <Tab label={tab.label} {...a11yProps(index)} key={index} />
+          ))}
         </Tabs>
       </Box>
-      <CustomTabPanel value={value} index={0}>
-        <Box sx={{ display: 'flex' }}>
-          <ProductCard imageUrl="/assets/module.jpg" title="Essenza De Ville" />
-          <ProductCard imageUrl="/assets/module.jpg" title="Essenza De Ville" />
-          <ProductCard imageUrl="/assets/module.jpg" title="Essenza De Ville" />
-
-        </Box>
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={1}>
-        Low Foam
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={2}>
-        Aromatic
-      </CustomTabPanel>
+      {tabs.map((tab, index) => (
+        <CustomTabPanel value={value} index={index} key={index}>
+          {tab.content}
+        </CustomTabPanel>
+      ))}
     </Box>
   );
-}
+};
+
+export default DynamicTabs;

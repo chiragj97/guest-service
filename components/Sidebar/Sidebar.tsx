@@ -1,6 +1,30 @@
+"use client"
+
+import React, { useState, MouseEvent } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { Popover } from "@mui/material";
+import Notifications from "../Notifications/Notifications";
 
 const Sidebar = () => {
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const router = useRouter();
+
+  const handleNotificationsClick = (event: MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleNavigation = (path: string) => {
+    router.push(path);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? "notifications-popover" : undefined;
+
   return (
     <div
       className="position-relative top-0 start-0 text-white"
@@ -17,6 +41,7 @@ const Sidebar = () => {
           <Image
             src="/assets/textmsg.png"
             alt="Text Message"
+            onClick={() => handleNavigation("/home")}
             width={30}
             height={30}
           />
@@ -37,7 +62,25 @@ const Sidebar = () => {
             alt="Settings"
             width={30}
             height={30}
+            onClick={handleNotificationsClick}
+            style={{ cursor: "pointer" }}
           />
+          <Popover
+            id={id}
+            open={open}
+            anchorEl={anchorEl}
+            onClose={handleClose}
+            anchorOrigin={{
+              vertical: "center",
+              horizontal: "right",
+            }}
+            transformOrigin={{
+              vertical: "center",
+              horizontal: "left",
+            }}
+          >
+            <Notifications />
+          </Popover>
           <Image
             src="/assets/module.jpg"
             alt="Profile Picture"
